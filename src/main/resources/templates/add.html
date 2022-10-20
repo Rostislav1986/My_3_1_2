@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add user</title>
+    <style>
+        td {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            padding: 10px 5px;
+            border-style: solid;
+            border-width: 1px;
+            overflow: hidden;
+            word-break: normal;
+            border-color: #ccc;
+            color: #333;
+            background-color: rgba(10, 178, 200, 45);
+        }
+
+        .buttonLogout {
+            border-width: 1px;
+            padding: 5px;
+            background-color: rgba(220, 220, 220);
+        }
+        div {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            color: rgba(255, 99, 71);
+        }
+    </style>
+</head>
+<body>
+<h1>Добавить пользователя</h1>
+<form th:action="@{add}" th:object="${user}" method="post">
+    <table>
+        <tr>
+            <td>
+                <label for="username">Введите Логин</label>
+                <input type="text" th:field="*{username}" id="username"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="name">Введите имя</label>
+                <input type="text" th:field="*{name}" id="name"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="surname">Введите фамилию</label>
+                <input type="text" th:field="*{surname}" id="surname"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="age">Введите возраст</label>
+                <input type="text" th:field="*{age}" id="age"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="password">Введите пароль</label>
+                <input type="password" th:field="*{password}" id="password"/>
+            </td>
+        </tr>
+    </table>
+</form>
+</form:form>
+    </fieldset>
+    <button type="submit">Сохранить пользователя</button>
+</form>
+<br>
+<br>
+<form th:action="@{/admin/allUsers}">
+    <button type="submit">Назад к списку пользователей</button>
+</form>
+<br/>
+<button class="buttonLogout" onclick="window.location.href = '/logout';">Выйти</button>
+</body>
+</html>

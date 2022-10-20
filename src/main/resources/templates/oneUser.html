@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Пользователь</title>
+    <style>
+        table {
+            width: 20%;
+            background: white;
+            color: rgba(20, 10, 70, 2);
+            border-spacing: 1px;
+        }
+        td, th {
+            background: rgba(10, 178, 200, 0.45);
+            padding: 5px;
+        }
+        h1 {
+            color: rgba(59, 8, 20, 100);
+        }
+    </style>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Логин</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Возраст</th>
+
+    </tr>
+    <tbody>
+    <tr th:each="user : ${user}">
+        <!--/*@thymesVar id="getId" type=""*/-->
+        <td th:utext="${user.getId()}"></td>
+        <td th:utext="${user.getUsername()}"></td>
+        <td th:utext="${user.getName()}"></td>
+        <td th:utext="${user.getSurname()}"></td>
+        <td th:utext="${user.getAge()}"></td>
+    </tr>
+    </tbody>
+</table>
+</form:form>
+<button class="buttonLogout" onclick="window.location.href = '/logout';">Выйти</button>
+</body>
+</html>

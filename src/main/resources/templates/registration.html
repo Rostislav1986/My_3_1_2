@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>New user</title>
+  <style>
+    td {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      padding: 10px 5px;
+      border-style: solid;
+      border-width: 1px;
+      overflow: hidden;
+      word-break: normal;
+      border-color: #ccc;
+      color: #333;
+      background-color: rgba(10, 178, 200, 45);
+    }
+    .buttonLogout {
+      border-width: 1px;
+      padding: 5px;
+      background-color: rgba(220, 220, 220);
+    }
+    div {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      color: rgba(255,99,71);
+    }
+  </style>
+</head>
+<body>
+  <form th:method="POST" th:action="@{registration}" th:object="${user}">
+    <h2>Регистрация</h2>
+    <table>
+      <tr>
+        <td>
+          <label for="username">Введите Логин</label>
+          <input type="text" th:field="*{username}" id="username"/>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <label for="name">Введите имя</label>
+          <input type="text" th:field="*{name}" id="name"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="surname">Введите фамилию</label>
+          <input type="text" th:field="*{surname}" id="surname"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="age">Введите возраст</label>
+          <input type="text" th:field="*{age}" id="age"/>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="password">Введите пароль</label>
+          <input type="password" th:field="*{password}" id="password"/>
+        </td>
+      </tr>
+      <br>
+      <br>
+      <tr>
+        <td>
+          <input class ="buttonEdit" type="submit" value="Зарегистрироваться"/>
+        </td>
+      </tr>
+    </table>
+  </form>
+  <br>
+  </form:form>
+  <br/>
+  <button class="buttonLogout" onclick="window.location.href = '/';">Главная</button>
+  <button class="buttonLogout" onclick="window.location.href = '/logout';">Выйти</button>
+</body>
+</html>
