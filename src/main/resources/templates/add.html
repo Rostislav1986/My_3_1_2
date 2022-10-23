@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add user</title>
+    <title>New user</title>
     <style>
         td {
             font-family: Arial, sans-serif;
@@ -16,7 +16,6 @@
             color: #333;
             background-color: rgba(10, 178, 200, 45);
         }
-
         .buttonLogout {
             border-width: 1px;
             padding: 5px;
@@ -25,13 +24,13 @@
         div {
             font-family: Arial, sans-serif;
             font-size: 14px;
-            color: rgba(255, 99, 71);
+            color: rgba(255,99,71);
         }
     </style>
 </head>
 <body>
-<h1>Добавить пользователя</h1>
-<form th:action="@{add}" th:object="${user}" method="post">
+<form th:method="POST" th:action="@{add}" th:object="${user}">
+    <h2>Новый пользователь</h2>
     <table>
         <tr>
             <td>
@@ -64,18 +63,22 @@
                 <input type="password" th:field="*{password}" id="password"/>
             </td>
         </tr>
+        <br>
+        <br>
+        <tr>
+            <td>
+                <input class ="buttonEdit" type="submit" value="Добавить пользователя"/>
+            </td>
+        </tr>
     </table>
 </form>
+<br>
 </form:form>
-    </fieldset>
-    <button type="submit">Сохранить пользователя</button>
-</form>
-<br>
-<br>
 <form th:action="@{/admin/allUsers}">
     <button type="submit">Назад к списку пользователей</button>
 </form>
-<br/>
+<br>
+<button class="buttonLogout" onclick="window.location.href = '/';">Главная</button>
 <button class="buttonLogout" onclick="window.location.href = '/logout';">Выйти</button>
 </body>
 </html>

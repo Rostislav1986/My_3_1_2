@@ -18,28 +18,19 @@ import java.util.Set;
 public class RegController {
 
     private UserService userService;
-    private BCryptPasswordEncoder passwordEncoder;
-    private RoleService roleService;
 
-    public RegController(UserService userService, BCryptPasswordEncoder passwordEncoder, RoleService roleService) {
+
+    public RegController(UserService userService) {
         this.userService = userService;
-        this.passwordEncoder = passwordEncoder;
-        this.roleService = roleService;
     }
-
     @GetMapping("registration")
     public String registration(Model model) {
         model.addAttribute("user", new User());
 
         return "registration";
     }
-
     @PostMapping("registration")
     public String addUser(@ModelAttribute("user") User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        Set<Role> roles = new HashSet<>();
-        roles.add(roleService.getRoleById(2L));
-        user.setRoles(roles);
         userService.addUser(user);
         return "redirect:/oneUser";
     }

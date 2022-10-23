@@ -46,17 +46,8 @@ public class AdminController {
         return "add";
     }
     @PostMapping(value = "add")
-    public String createUser(@ModelAttribute("user") User user,
-                             @RequestParam(required=false) String roleAdmin) {
-        Set<Role> roles = new HashSet<>();
-        roles.add(roleService.getRoleById(2L));
-        if (roleAdmin != null && roleAdmin.equals("ROLE_ADMIN")) {
-            roles.add(roleService.getRoleById(1L));
-        }
-        user.setRoles(roles);
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+    public String createUser(@ModelAttribute("user") User user) {
         userService.addUser(user);
-
         return "redirect:/admin/allUsers";
     }
 
